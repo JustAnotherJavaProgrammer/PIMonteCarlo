@@ -33,7 +33,7 @@ public class MonteCarlo {
 	 * @return Whether the drop hit the circle
 	 */
 	private boolean doesRandomDropHit() {
-		return Math.pow(Math.random(), 2) + Math.pow(Math.random(), 2) < 1;
+		return Math.pow(rand.nextDouble(), 2) + Math.pow(rand.nextDouble(), 2) < 1;
 	}
 
 	public double estimatePI(int dropsTotal, int dropsHit) {

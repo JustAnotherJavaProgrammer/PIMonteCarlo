@@ -2,8 +2,8 @@ package pi;
 
 public class Main {
 	public static void main(String[] args) {
-		final int drops = 100000000;
-		double[] estimates = new double[drops];
+		final int drops = Integer.MAX_VALUE;
+//		double[] estimates = new double[drops];
 
 		MonteCarlo mc = new MonteCarlo();
 
@@ -12,12 +12,20 @@ public class Main {
 
 			@Override
 			public void newValue(int dropTotal, int dropNo, double pi) {
-				estimates[dropNo - 1] = pi;
+				if(dropNo % 1000000 == 0)
+					System.out.println(dropNo + "\t" + pi);
+//				estimates[dropNo - 1] = pi;
 			}
 		});
 
 		// Näherung für 20 Tropfen
-		System.out.println(drops + "\t" + pi);
-
+//		System.out.println(drops + "\t" + pi);
+//		try {
+//			Plotting.plot(estimates);
+//		} catch (IOException | InterruptedException e) {
+//			e.printStackTrace();
+//		}
+		System.out.println("Estimate: " + pi);
+		System.out.println(Math.PI);
 	}
 }
