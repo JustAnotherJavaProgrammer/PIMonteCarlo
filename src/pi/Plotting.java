@@ -9,7 +9,8 @@ public class Plotting {
 		StringBuilder command = new StringBuilder();
 		for (long i = 0; i < estimates.length; i++) {
 //				command.append((i + 1) + "\t" + estimates[(int) i] + "\n");
-			command.append(estimates[(int) i] + "\n");
+//			command.append(estimates[(int) i] + "\n");
+			command.append(cumAvg(estimates, (int) i, 10) + "\n");
 		}
 		System.out.println(command.toString());
 		// command.append("\"");
@@ -21,9 +22,13 @@ public class Plotting {
 		// return exitCode;
 	}
 	
-	private int cumAvg(double[] estimates, int i, int vals) {
+	private static double cumAvg(double[] estimates, int i, int vals) {
 		int numOfValBef = Math.min(vals/2, i);
-		int numOfValAfter = Math.min(vals/2, estimates.length-i);
-		
+		int numOfValAfter = Math.min(vals/2, estimates.length-(i+1));
+		double avg = 0;
+		for (int j = 0; j < numOfValAfter + numOfValBef + 1; j++) {
+			avg += estimates[(i - numOfValBef)+j];
+		}
+		return avg/(numOfValAfter + numOfValBef + 1);
 	}
 }

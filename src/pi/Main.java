@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Main {
 	public static void main(String[] args) {
-		final int drops = 1000000;
+		final int drops = 10000000;
 		final double[] estimates = new double[drops];
 
 		MonteCarlo mc = new MonteCarlo();
